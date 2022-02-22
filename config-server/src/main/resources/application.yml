@@ -8,5 +8,6 @@ spring:
   cloud:
     config:
       server:
-        native:
-          search-locations: ../config/
+        git:
+          uri: https://github.com/LucasNovaesDragojevic/spring-cloud
+          search-paths: config
