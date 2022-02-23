@@ -13,16 +13,18 @@ import com.provider.model.PurchaseItem;
 import com.provider.repository.PurchaseRepository;
 import com.provider.repository.ProductRepository;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-
-import ch.qos.logback.core.net.SyslogOutputStream;
 
 @Service
 @Transactional
 public class PurchaseService
 {
+    private static final Logger LOG = LoggerFactory.getLogger(PurchaseService.class);
+
     @Autowired
     private PurchaseRepository purchaseRepository;
 
@@ -37,6 +39,7 @@ public class PurchaseService
     public Purchase execute(List<PurchaseItemDto> purchaseItemsDto) 
     {
         var purchaseItems = this.toPurchaseItems(purchaseItemsDto);
+        LOG.info(purchaseItems.toString());
         var purchase = new Purchase(purchaseItems);
         purchase.setTimeToFinish(purchaseItemsDto.size());
         return purchaseRepository.save(purchase);
