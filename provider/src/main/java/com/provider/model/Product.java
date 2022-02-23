@@ -1,5 +1,6 @@
 package com.provider.model;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 import javax.persistence.Entity;
@@ -11,14 +12,16 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-public class InfoProvider 
+public class Product 
 {
     @Id
     private String id = UUID.randomUUID().toString();
-
-    private String name;
-
-    private String state;
-
-    private String address;
+	
+	private String name;
+	
+	private String state;
+	
+	private String description;
+	
+	private BigDecimal price;
 }

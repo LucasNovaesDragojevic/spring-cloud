@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,14 +12,13 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-public class InfoProvider 
+public class PurchaseItem
 {
     @Id
     private String id = UUID.randomUUID().toString();
 
-    private String name;
-
-    private String state;
-
-    private String address;
+    private Integer quantity;
+	
+	@ManyToOne
+	private Product product;
 }

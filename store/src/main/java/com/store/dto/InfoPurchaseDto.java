@@ -3,8 +3,8 @@ package com.store.dto;
 import lombok.Data;
 
 @Data
-public class ItemDto 
+public class InfoPurchaseDto
 {
     private String id;
-    private Short quantity;
+    private Integer timeToFinish;
 }

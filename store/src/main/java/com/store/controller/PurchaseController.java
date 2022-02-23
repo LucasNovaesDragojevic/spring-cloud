@@ -1,6 +1,7 @@
 package com.store.controller;
 
 import com.store.dto.PurchaseDto;
+import com.store.dto.PurchaseResponse;
 import com.store.service.PurchaseService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,8 @@ public class PurchaseController
     private PurchaseService purchaseService;
 
     @PostMapping
-    void purchase(@RequestBody PurchaseDto purchaseDto)
+    PurchaseResponse purchase(@RequestBody PurchaseDto purchaseDto)
     {
-        purchaseService.executePurchase(purchaseDto);
+        return purchaseService.executePurchase(purchaseDto);
     }
 }

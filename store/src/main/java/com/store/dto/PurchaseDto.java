@@ -7,6 +7,11 @@ import lombok.Data;
 @Data
 public class PurchaseDto 
 {
-    private List<ItemDto> itens;
+    private List<ItemDto> items;
     private AddressDto address;
+
+    public String getAddressInOneString() 
+    {
+        return this.address.getAddressInOneString();
+    }
 }
