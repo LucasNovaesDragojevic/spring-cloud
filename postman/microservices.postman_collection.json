@@ -1,0 +1,423 @@
+{
+	"info": {
+		"_postman_id": "a4e1bbed-af24-4f4b-8ed4-7e7e415ba768",
+		"name": "microservices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Provider",
+			"item": [
+				{
+					"name": "Get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/providers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"providers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get with parameter",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/providers/search/findByAddressRegion?region=SP",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"providers",
+								"search",
+								"findByAddressRegion"
+							],
+							"query": [
+								{
+									"key": "region",
+									"value": "SP"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Flores e Amor\",\n    \"description\": \"Loja\",\n    \"cnpj\": \"31367794000150\",\n    \"address\": {\n        \"street\": \"Rua do amor\",\n        \"number\": \"100\",\n        \"complement\": \"Loja\",\n        \"city\": \"São Paulo\",\n        \"region\": \"SP\",\n        \"zip\": \"03356089\",\n        \"country\": \"Brasil\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/providers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"providers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Flores e ódio\",\n    \"description\": \"Loja\",\n    \"cnpj\": \"31367794000150\",\n    \"address\": {\n        \"street\": \"Rua do amor\",\n        \"number\": \"100\",\n        \"complement\": \"Loja\",\n        \"city\": \"São Paulo\",\n        \"region\": \"SP\",\n        \"zip\": \"03356089\",\n        \"country\": \"Brasil\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/providers/3b01608c-479b-4936-adc6-08f90752889a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"providers",
+								"3b01608c-479b-4936-adc6-08f90752889a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/providers/3b01608c-479b-4936-adc6-08f90752889a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"providers",
+								"3b01608c-479b-4936-adc6-08f90752889a"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Config",
+			"item": [
+				{
+					"name": "Get configurations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8888/purchase/default",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"purchase",
+								"default"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Eureka",
+			"item": [
+				{
+					"name": "Get eureka apps",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8761/eureka/apps",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8761",
+							"path": [
+								"eureka",
+								"apps"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Get all products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all products findByUuidIn",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    \"5f599a49-c7e1-4f60-a1b9-7508a6e5b30b\"\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/products/search/findByUuidIn?uuids=6510f6cf-85ef-43e1-b470-cf59f79d81d&uuids=6510f6cf-85ef-43e1-b470-cf59f79d81d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"products",
+								"search",
+								"findByUuidIn"
+							],
+							"query": [
+								{
+									"key": "uuids",
+									"value": "6510f6cf-85ef-43e1-b470-cf59f79d81d"
+								},
+								{
+									"key": "uuids",
+									"value": "6510f6cf-85ef-43e1-b470-cf59f79d81d"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/products/9ccb4e10-8989-4dc0-96d7-2c83f84aeb11a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"products",
+								"9ccb4e10-8989-4dc0-96d7-2c83f84aeb11a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Tulipas\",\n    \"price\": 100.00\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Rosa vermelha\",\n    \"price\": 100.00\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/products/faaa71f2-743b-463b-a291-fc9ba3207f11",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"products",
+								"faaa71f2-743b-463b-a291-fc9ba3207f11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/products/9ccb4e10-8989-4dc0-96d7-2c83f84aeb11",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"products",
+								"9ccb4e10-8989-4dc0-96d7-2c83f84aeb11"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Purchase",
+			"item": [
+				{
+					"name": "Get all purchases",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/purchases",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"purchases"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get purchase",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/purchases/4fff8b50-3a48-488d-a2ae-b2578cb7e294",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"purchases",
+								"4fff8b50-3a48-488d-a2ae-b2578cb7e294"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create purchase",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"items\": [\n        {\n            \"uuid\": \"5f599a49-c7e1-4f60-a1b9-7508a6e5b30b\",\n            \"quantity\": 10\n        },\n        {\n            \"uuid\": \"6510f6cf-85ef-43e1-b470-cf59f79d81d4\",\n            \"quantity\": 20\n        }\n    ],\n    \"destinationAddress\": {\n        \"street\": \"Rua Amor Perfeito\",\n        \"number\": \"767\",\n        \"complement\": \"CS 1\",\n        \"city\": \"São Paulo\",\n        \"region\": \"SP\",\n        \"zip\": \"02363165\",\n        \"country\": \"Brasil\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/purchases",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"purchases"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
