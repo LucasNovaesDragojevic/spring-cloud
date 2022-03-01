@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/purchase
+    username: popos
+    password: Cp1Kr!Mp
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: true
