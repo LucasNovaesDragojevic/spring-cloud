@@ -16,12 +16,15 @@ import com.purchase.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import io.github.resilience4j.bulkhead.annotation.Bulkhead;
+
 @Service
 public class ProductService
 {
     @Autowired
     private ProductClient productClient;
 
+    @Bulkhead(name = "ProductService.findByUuidIn")
     public Set<ProductDto> findByUuidIn(Set<String> itemsIds) 
     {
         var collectionModel = productClient.findByUuidIn(itemsIds);

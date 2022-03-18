@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import io.github.resilience4j.bulkhead.annotation.Bulkhead;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 
 @Service
@@ -27,7 +28,8 @@ public class ProviderService
     @Autowired
     private ProviderClient providerClient;
 
-    @CircuitBreaker(name = "findByRegion", fallbackMethod = "findProviderByRegionFallback")
+    @CircuitBreaker(name = "ProviderService.findByRegion", fallbackMethod = "findProviderByRegionFallback")
+    @Bulkhead(name = "ProviderService.findByRegion")
     public Set<ProviderDto> findByRegion(String region) 
     {
         var collectionModel = providerClient.findByRegion(region);
