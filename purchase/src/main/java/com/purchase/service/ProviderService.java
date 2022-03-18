@@ -13,6 +13,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+
 @Service
 public class ProviderService
 {
@@ -25,6 +27,7 @@ public class ProviderService
     @Autowired
     private ProviderClient providerClient;
 
+    @CircuitBreaker(name = "findByRegion", fallbackMethod = "findProviderByRegionFallback")
     public Set<ProviderDto> findByRegion(String region) 
     {
         var collectionModel = providerClient.findByRegion(region);
@@ -46,5 +49,11 @@ public class ProviderService
                             LOG.error(NO_PROVIDER_FOUND_TO_CHOSE_THE_BEST);
                             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, NO_PROVIDER_FOUND_TO_CHOSE_THE_BEST);
                         });
+    }
+
+    private Set<ProviderDto> findProviderByRegionFallback(String region, Exception exception)
+    {
+        LOG.error(exception.getLocalizedMessage());
+        return Set.of(new ProviderDto("00000000-0000-0000-0000-000000000000"));
     }
 }
